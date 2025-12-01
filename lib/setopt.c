@@ -788,6 +788,9 @@ static CURLcode setopt_bool(struct Curl_easy *data, CURLoption option,
   case CURLOPT_IGNORE_CONTENT_LENGTH:
     s->ignorecl = enabled;
     break;
+  case CURLOPT_IGNORE_ONION:
+    s->ignore_onion = enabled;
+    break;
   case CURLOPT_SSL_SESSIONID_CACHE:
     s->ssl.primary.cache_session = enabled;
 #ifndef CURL_DISABLE_PROXY

@@ -861,7 +861,7 @@ CURLcode Curl_resolv(struct Curl_easy *data,
   /* We should intentionally error and not resolve .onion TLDs */
   hostname_len = strlen(hostname);
   DEBUGASSERT(hostname_len);
-  if(hostname_len >= 7 &&
+  if(!data->set.ignore_onion && hostname_len >= 7 &&
      (curl_strequal(&hostname[hostname_len - 6], ".onion") ||
       curl_strequal(&hostname[hostname_len - 7], ".onion."))) {
     failf(data, "Not resolving .onion address (RFC 7686)");
